@@ -1,6 +1,23 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using WeatherApp.Backend.Api.FrameworkExtensions;
 
-app.MapGet("/", () => "Hello World!");
+namespace WeatherApp.Backend.Api;
 
-app.Run();
+public class Program
+{
+  public static async Task Main(string[] args)
+  {
+    var webHostBuilder = ConfigureWebApplicationBuilder(args);
+    var app = webHostBuilder.Build();
+
+    app.ConfigureWebApplicationMiddleware();
+
+    await app.RunAsync();
+  }
+
+  private static WebApplicationBuilder ConfigureWebApplicationBuilder(string[] args)
+    => WebApplication.CreateBuilder(args)
+      .ConfigureSecretsProvider()
+      .ConfigureAsHttpApi()
+      .AttachMediatR()
+      .ConfigureWeatherApiClient();
+}

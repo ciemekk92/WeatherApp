@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>WeatherApp.Backend.Api.Program</StartupObject>
+    <UserSecretsId>fadc6605-d02a-4d01-8ea7-d7563975306d</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Weather.Module\Weather.Application\Weather.Application.csproj" />
+    <ProjectReference Include="..\Timezone.Module\Timezone.Application\Timezone.Application.csproj" />
+    <ProjectReference Include="..\Astronomy.Module\Astronomy.Application\Astronomy.Application.csproj" />
+    <ProjectReference Include="..\Common.Module\Common.Infrastructure\Common.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
