@@ -6,7 +6,10 @@
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/eslint.config.mjs"
+      "!{projectRoot}/eslint.config.mjs",
+      "!{projectRoot}/**/*.Tests/**/*",
+      "!{projectRoot}/**/bin/**/*",
+      "!{projectRoot}/**/obj/**/*"
     ],
     "sharedGlobals": []
   },
@@ -37,5 +40,6 @@
       "style": "scss",
       "unitTestRunner": "vitest-angular"
     }
-  }
+  },
+  "plugins": ["@nx/dotnet"]
 }
