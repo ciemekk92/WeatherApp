@@ -1,0 +1,62 @@
+:host {
+  .top-navigation {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 3% 7%;
+    font-size: 2rem;
+    background: linear-gradient(
+      135deg,
+      #4f46e5 0%,
+      #6366f1 40%,
+      #3b82f6 100%
+    );
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+
+    ::ng-deep lib-shared-ui-dark-mode-switch {
+      margin-left: auto;
+    }
+
+    &__logo-icon {
+      font-size: 4rem;
+    }
+
+    &__logo-text {
+      color: white;
+    }
+
+    &__logo-icon,
+    &__logo-text {
+      cursor: default;
+      text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.6);
+      transition: none;
+    }
+
+    &__waves {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 5rem;
+      z-index: 1;
+
+      & path {
+        animation: waveMove 24s ease-in-out infinite alternate;
+      }
+    }
+
+    @keyframes waveMove {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+  }
+}

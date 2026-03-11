@@ -1,0 +1,13 @@
+<p-select-button
+  [options]="options"
+  optionLabel="label"
+  optionValue="value"
+  ariaLabelledBy="basic"
+  [(ngModel)]="value"
+  (onChange)="handleChange($event)"
+>
+  <ng-template #item let-item>
+    <span>{{ item.label }}</span>
+    <span>{{ item.icon }}</span>
+  </ng-template>
+</p-select-button>

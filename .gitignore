@@ -50,3 +50,5 @@ __screenshots__/
 **/bin/
 **/obj/
 /artifacts/
+
+vitest.config.*.timestamp*

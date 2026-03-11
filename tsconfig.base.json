@@ -4,7 +4,7 @@
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@weather-app/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@weather-app/weather-features": ["libs/weather/features/src/index.ts"],
+      "@weather-app/astronomy-features": [
+        "libs/astronomy/features/src/index.ts"
+      ],
+      "@weather-app/timezone-features": ["libs/timezone/features/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

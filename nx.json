@@ -9,7 +9,9 @@
       "!{projectRoot}/eslint.config.mjs",
       "!{projectRoot}/**/*.Tests/**/*",
       "!{projectRoot}/**/bin/**/*",
-      "!{projectRoot}/**/obj/**/*"
+      "!{projectRoot}/**/obj/**/*",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json"
     ],
     "sharedGlobals": []
   },
@@ -31,6 +33,10 @@
     "@angular/build:unit-test": {
       "cache": true,
       "inputs": ["default", "^production"]
+    },
+    "@nx/vitest:test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
     }
   },
   "generators": {
@@ -39,6 +45,13 @@
       "linter": "eslint",
       "style": "scss",
       "unitTestRunner": "vitest-angular"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "vitest-analog"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
     }
   },
   "plugins": ["@nx/dotnet"]
