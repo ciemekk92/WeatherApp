@@ -3,13 +3,17 @@ using FluentValidation;
 using Weather.Application;
 using Timezone.Application;
 using Astronomy.Application;
+using Common.Infrastructure.Exceptions;
 using Common.Infrastructure.Services.Implementations;
 using Common.Infrastructure.Services.Interfaces;
+using WeatherApp.Backend.Api.Configuration;
 
 namespace WeatherApp.Backend.Api.FrameworkExtensions;
 
 internal static class ApplicationBuildingExtensions
 {
+  private const string CorsPolicyName = "ApiCorsPolicy";
+
   private static readonly Assembly[] Assemblies =
   [
     typeof(WeatherModuleFeaturesAssemblyMarker).Assembly,
@@ -29,8 +33,19 @@ internal static class ApplicationBuildingExtensions
   internal static WebApplicationBuilder ConfigureAsHttpApi(this WebApplicationBuilder builder)
   {
     builder.Services
-      .AddRouting(routes => routes.LowercaseUrls = true);
-    // configure CORS if needed
+      .AddRouting(routes => routes.LowercaseUrls = true)
+      .AddCors(options =>
+      {
+        var corsHosts = builder.GetConfigurationSection<CorsSettings>().AllowedOrigins
+                        ?? throw new ApplicationConfigurationException("Failed to load CORS settings configuration.");
+
+        options.AddPolicy(CorsPolicyName, corsBuilder =>
+        {
+          corsBuilder.WithOrigins(corsHosts.ToArray())
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        });
+      });
 
     if (builder.ShouldInstallSwagger())
     {
@@ -51,17 +66,20 @@ internal static class ApplicationBuildingExtensions
     {
       app.UseSwagger();
       app.UseSwaggerUI();
-      app.UseRouting();
+      app.UseRouting()
+        .UseCors(CorsPolicyName);
       app.MapControllers();
     }
   }
 
+  internal static T GetConfigurationSection<T>(this WebApplicationBuilder builder)
+    => builder.Configuration.GetSection(typeof(T).Name).Get<T>()
+       ?? throw new ApplicationConfigurationException(
+         $"The configuration section {typeof(T).Name} could not be found.");
+
   internal static WebApplicationBuilder AttachMediatR(this WebApplicationBuilder builder)
   {
-    builder.Services.AddMediatR(configuration =>
-    {
-      configuration.RegisterServicesFromAssemblies(Assemblies);
-    });
+    builder.Services.AddMediatR(configuration => { configuration.RegisterServicesFromAssemblies(Assemblies); });
 
     builder.Services.AddValidatorsFromAssemblies(Assemblies);
 
@@ -93,4 +111,3 @@ internal static class ApplicationBuildingExtensions
     return builder;
   }
 }
-

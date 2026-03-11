@@ -1,0 +1,32 @@
+<p-panel [showHeader]="false">
+  <div class="data-selection">
+    <p-fieldset legend="City">
+      <p-select
+        [options]="citiesOptions"
+        [(ngModel)]="selectedCity"
+        [fluid]=true
+        optionLabel="name"
+        placeholder="Select a City"
+      />
+    </p-fieldset>
+
+    <p-fieldset legend="Data Type">
+      <div class="data-selection__data-type-options">
+        @for (dt of dataTypeOptions; track dt.value) {
+          <div>
+            <p-radio-button
+              inputId="{{dt.value}}"
+              name="dataType"
+              [value]="dt.value"
+              [(ngModel)]="selectedDataType"
+            />
+            <label for="{{dt.value}}">
+              {{ dt.name }}
+            </label>
+          </div>
+        }
+      </div>
+    </p-fieldset>
+    <p-button label="Fetch Data" (onClick)="onFetchData()" />
+  </div>
+</p-panel>

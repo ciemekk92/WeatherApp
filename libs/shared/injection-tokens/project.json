@@ -1,0 +1,13 @@
+{
+  "name": "shared-injection-tokens",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/injection-tokens/src",
+  "prefix": "lib-shared-injection-tokens",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

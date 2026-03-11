@@ -1,0 +1,43 @@
+<div class="home">
+  <section class="home__selection">
+    <app-data-selection (dataFetched)="onDataFetched($event)" />
+  </section>
+
+  @if (isLoading()) {
+    <lib-shared-ui-loader [loading]="isLoading()" />
+  } @else {
+    @if (currentWeatherData(); as data) {
+      <section class="home__results">
+        <div class="home__panel">
+          <lib-weather-features-weather-panel [data]="data" />
+        </div>
+        <div class="home__additional-info">
+          <app-weather-additional-info [data]="data" />
+        </div>
+      </section>
+    }
+
+    @if (currentAstronomyData(); as data) {
+      <section class="home__results">
+        <div class="home__panel">
+          <lib-astronomy-features-astronomy-panel [data]="data" />
+        </div>
+        <div class="home__additional-info">
+          <app-astronomy-additional-info [data]="data" />
+        </div>
+      </section>
+    }
+
+    @if (currentTimezoneData(); as data) {
+      <section class="home__results">
+        <div class="home__panel">
+          <lib-timezone-features-timezone-panel [data]="data" />
+        </div>
+        <div class="home__additional-info">
+          <app-timezone-additional-info [data]="data" />
+        </div>
+      </section>
+    }
+  }
+</div>
+

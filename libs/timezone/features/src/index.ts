@@ -1,1 +1,2 @@
-export * from './lib/features/features';
+export * from './lib/facades';
+export * from './lib/timezone-panel/timezone-panel.component';

@@ -52,6 +52,9 @@
     },
     "@nx/angular:component": {
       "style": "scss"
+    },
+    "@schematics/angular:component": {
+      "style": "scss"
     }
   },
   "plugins": ["@nx/dotnet"]

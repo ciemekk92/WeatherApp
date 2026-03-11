@@ -1,0 +1,13 @@
+{
+  "name": "astronomy-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/astronomy/data-access/src",
+  "prefix": "lib-astronomy-data-access",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

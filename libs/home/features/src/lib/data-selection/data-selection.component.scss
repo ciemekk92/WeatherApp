@@ -1,0 +1,14 @@
+.data-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  & ::ng-deep p-button {
+    margin: 0 auto;
+  }
+
+  &__data-type-options {
+    display: flex;
+    gap: 1rem;
+  }
+}

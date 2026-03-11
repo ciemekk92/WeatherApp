@@ -1,0 +1,10 @@
+<div class="astronomy-panel">
+  <div class="astronomy-panel__header">Astronomy</div>
+  <ul class="astronomy-panel__details">
+    <li>📍 Name: <strong>{{ data().location.name }}</strong></li>
+    <li>🏳️ Country: <strong>{{ data().location.country }}</strong></li>
+    <li>🌅 Sunrise: <strong>{{ data().astronomy.astro.sunrise }}</strong></li>
+    <li>🌇 Sunset: <strong>{{ data().astronomy.astro.sunset }}</strong></li>
+    <li>☀️ Sun Up: <strong>{{ data().astronomy.astro.isSunUp ? 'Yes' : 'No' }}</strong></li>
+  </ul>
+</div>

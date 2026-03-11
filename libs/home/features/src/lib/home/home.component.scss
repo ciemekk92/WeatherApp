@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+
+  .home {
+    &__selection {
+      margin-bottom: 1rem;
+    }
+
+    &__results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+
+      @media (max-width: 699px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__panel,
+    &__additional-info {
+      min-width: 0;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="weather-panel">
+  <div class="weather-panel__header">Current Weather in {{ data().location.name }}</div>
+  <div class="weather-panel__main">
+    @if (data().current.condition; as condition) {
+      <img
+        class="weather-panel__icon"
+        [src]="condition.icon"
+        [alt]="condition.text ?? 'Weather icon'"
+      />
+    }
+    <div class="weather-panel__temp-block">
+      <span class="weather-panel__temp">{{ data().current.tempC }}°C</span>
+      <span class="weather-panel__condition">{{ data().current.condition?.text ?? '' }}</span>
+    </div>
+  </div>
+  <ul class="weather-panel__details">
+    <li>💧 Feels like: {{ data().current.feelslikeC }}°C ({{ data().current.feelslikeF}}°C)</li>
+    <li>💧 Humidity: {{ data().current.humidity }}%</li>
+    <li>💨 Wind: {{ data().current.windKph }} km/h ({{ data().current.windMph}} mph)</li>
+    <li>☁️ Cloud coverage: {{ data().current.cloud }}%</li>
+  </ul>
+</div>
+

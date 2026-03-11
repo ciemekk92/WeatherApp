@@ -22,6 +22,20 @@
       margin-left: auto;
     }
 
+    @media (max-width: 499px) {
+      flex-wrap: wrap;
+      justify-content: center;
+
+      ::ng-deep lib-shared-ui-dark-mode-switch {
+        margin-left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+      }
+    }
+
     &__logo-icon {
       font-size: 4rem;
     }
@@ -44,9 +58,18 @@
       width: 200%;
       height: 5rem;
       z-index: 1;
+      pointer-events: none;
 
-      & path {
-        animation: waveMove 24s ease-in-out infinite alternate;
+      & path:nth-child(1) {
+        animation: waveMove 18s linear infinite alternate;
+      }
+
+      & path:nth-child(2) {
+        animation: waveMove 24s linear infinite alternate;
+      }
+
+      & path:nth-child(3) {
+        animation: waveMove 30s linear infinite alternate;
       }
     }
 

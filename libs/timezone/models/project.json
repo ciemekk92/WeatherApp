@@ -1,0 +1,13 @@
+{
+  "name": "timezone-models",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/timezone/models/src",
+  "prefix": "lib-timezone-models",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

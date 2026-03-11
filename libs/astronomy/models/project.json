@@ -1,0 +1,13 @@
+{
+  "name": "astronomy-models",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/astronomy/models/src",
+  "prefix": "lib-astronomy-models",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

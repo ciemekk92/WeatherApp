@@ -1,0 +1,13 @@
+{
+  "name": "weather-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/weather/data-access/src",
+  "prefix": "lib-weather-data-access",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

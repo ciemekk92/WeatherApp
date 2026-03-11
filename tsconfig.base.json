@@ -16,11 +16,19 @@
     "baseUrl": ".",
     "paths": {
       "@weather-app/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@weather-app/shared-injection-tokens": ["libs/shared/injection-tokens/src/index.ts"],
+      "@weather-app/shared-models": ["libs/shared/models/src/index.ts"],
+      "@weather-app/shared-utils": ["libs/shared/utils/src/index.ts"],
+      "@weather-app/home-features": ["libs/home/features/src/index.ts"],
       "@weather-app/weather-features": ["libs/weather/features/src/index.ts"],
-      "@weather-app/astronomy-features": [
-        "libs/astronomy/features/src/index.ts"
-      ],
-      "@weather-app/timezone-features": ["libs/timezone/features/src/index.ts"]
+      "@weather-app/weather-models": ["libs/weather/models/src/index.ts"],
+      "@weather-app/weather-data-access": ["libs/weather/data-access/src/index.ts"],
+      "@weather-app/astronomy-features": ["libs/astronomy/features/src/index.ts"],
+      "@weather-app/astronomy-models": ["libs/astronomy/models/src/index.ts"],
+      "@weather-app/astronomy-data-access": ["libs/astronomy/data-access/src/index.ts"],
+      "@weather-app/timezone-features": ["libs/timezone/features/src/index.ts"],
+      "@weather-app/timezone-data-access": ["libs/timezone/data-access/src/index.ts"],
+      "@weather-app/timezone-models": ["libs/timezone/models/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
