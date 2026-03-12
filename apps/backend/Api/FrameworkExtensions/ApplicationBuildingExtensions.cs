@@ -8,6 +8,7 @@ using Common.Infrastructure.Services.Implementations;
 using Common.Infrastructure.Services.Interfaces;
 using WeatherApp.Backend.Api.Configuration;
 using Microsoft.Extensions.Caching.Memory;
+using WeatherApp.Backend.Api.Middleware;
 
 namespace WeatherApp.Backend.Api.FrameworkExtensions;
 
@@ -63,6 +64,8 @@ internal static class ApplicationBuildingExtensions
 
   internal static void ConfigureWebApplicationMiddleware(this WebApplication app)
   {
+    app.UseMiddleware<ExceptionHandlingMiddleware>();
+
     if (app.ShouldInstallSwagger())
     {
       app.UseSwagger();

@@ -19,6 +19,7 @@
       "@weather-app/shared-injection-tokens": ["libs/shared/injection-tokens/src/index.ts"],
       "@weather-app/shared-models": ["libs/shared/models/src/index.ts"],
       "@weather-app/shared-utils": ["libs/shared/utils/src/index.ts"],
+      "@weather-app/shared-services": ["libs/shared/services/src/index.ts"],
       "@weather-app/home-features": ["libs/home/features/src/index.ts"],
       "@weather-app/weather-features": ["libs/weather/features/src/index.ts"],
       "@weather-app/weather-models": ["libs/weather/models/src/index.ts"],
