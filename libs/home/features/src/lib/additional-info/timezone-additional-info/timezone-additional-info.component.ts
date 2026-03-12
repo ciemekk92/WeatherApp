@@ -3,7 +3,7 @@ import { TimezoneDto } from '@weather-app/timezone-models';
 import { Fieldset } from 'primeng/fieldset';
 
 @Component({
-  selector: 'app-timezone-additional-info',
+  selector: 'lib-home-features-timezone-additional-info',
   standalone: true,
   templateUrl: './timezone-additional-info.component.html',
   styleUrl: './timezone-additional-info.component.scss',

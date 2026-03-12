@@ -3,7 +3,7 @@ import { WeatherDto } from '@weather-app/weather-models';
 import { Fieldset } from 'primeng/fieldset';
 
 @Component({
-  selector: 'app-weather-additional-info',
+  selector: 'lib-home-features-weather-additional-info',
   standalone: true,
   templateUrl: './weather-additional-info.component.html',
   styleUrl: './weather-additional-info.component.scss',

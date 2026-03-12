@@ -15,7 +15,7 @@ import { Fieldset } from 'primeng/fieldset';
 import { Panel } from 'primeng/panel';
 
 @Component({
-  selector: 'app-data-selection',
+  selector: 'lib-home-features-data-selection',
   standalone: true,
   imports: [FormsModule, RadioButton, Button, Select, Fieldset, Panel],
   templateUrl: './data-selection.component.html',

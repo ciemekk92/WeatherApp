@@ -3,7 +3,7 @@ import { AstronomyDto } from '@weather-app/astronomy-models';
 import { Fieldset } from 'primeng/fieldset';
 
 @Component({
-  selector: 'app-astronomy-additional-info',
+  selector: 'lib-home-features-astronomy-additional-info',
   standalone: true,
   templateUrl: './astronomy-additional-info.component.html',
   styleUrl: './astronomy-additional-info.component.scss',

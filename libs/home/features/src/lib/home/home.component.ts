@@ -11,7 +11,7 @@ import { TimezoneAdditionalInfoComponent } from '../additional-info/timezone-add
 import { LoaderComponent } from '@weather-app/shared-ui';
 
 @Component({
-  selector: 'app-home',
+  selector: 'lib-home-features-home',
   standalone: true,
   imports: [
     DataSelectionComponent,

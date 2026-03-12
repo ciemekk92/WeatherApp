@@ -1,6 +1,6 @@
 <div class="home">
   <section class="home__selection">
-    <app-data-selection (dataFetched)="onDataFetched($event)" />
+    <lib-home-features-data-selection (dataFetched)="onDataFetched($event)" />
   </section>
 
   @if (isLoading()) {
@@ -12,7 +12,7 @@
           <lib-weather-features-weather-panel [data]="data" />
         </div>
         <div class="home__additional-info">
-          <app-weather-additional-info [data]="data" />
+          <lib-home-features-weather-additional-info [data]="data" />
         </div>
       </section>
     }
@@ -23,7 +23,7 @@
           <lib-astronomy-features-astronomy-panel [data]="data" />
         </div>
         <div class="home__additional-info">
-          <app-astronomy-additional-info [data]="data" />
+          <lib-home-features-astronomy-additional-info [data]="data" />
         </div>
       </section>
     }
@@ -34,7 +34,7 @@
           <lib-timezone-features-timezone-panel [data]="data" />
         </div>
         <div class="home__additional-info">
-          <app-timezone-additional-info [data]="data" />
+          <lib-home-features-timezone-additional-info [data]="data" />
         </div>
       </section>
     }
