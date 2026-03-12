@@ -1,12 +1,13 @@
 using System.Reflection;
-using FluentValidation;
 using Weather.Application;
 using Timezone.Application;
 using Astronomy.Application;
+using Common.Infrastructure.Configuration;
 using Common.Infrastructure.Exceptions;
 using Common.Infrastructure.Services.Implementations;
 using Common.Infrastructure.Services.Interfaces;
 using WeatherApp.Backend.Api.Configuration;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace WeatherApp.Backend.Api.FrameworkExtensions;
 
@@ -81,8 +82,6 @@ internal static class ApplicationBuildingExtensions
   {
     builder.Services.AddMediatR(configuration => { configuration.RegisterServicesFromAssemblies(Assemblies); });
 
-    builder.Services.AddValidatorsFromAssemblies(Assemblies);
-
     return builder;
   }
 
@@ -106,7 +105,21 @@ internal static class ApplicationBuildingExtensions
 
   internal static WebApplicationBuilder ConfigureWeatherApiClient(this WebApplicationBuilder builder)
   {
-    builder.Services.AddHttpClient<IWeatherApiClient, WeatherApiClient>();
+    var cacheSettings = builder.GetConfigurationSection<CacheSettings>();
+    var cacheOptions = new WeatherApiCacheOptions
+    {
+      CurrentWeatherTtl = TimeSpan.FromMinutes(cacheSettings.CurrentWeatherTtlMinutes),
+      TimezoneTtl = TimeSpan.FromMinutes(cacheSettings.TimezoneTtlMinutes),
+      AstronomyTtl = TimeSpan.FromMinutes(cacheSettings.AstronomyTtlMinutes)
+    };
+
+    builder.Services.AddMemoryCache();
+    builder.Services.AddHttpClient<WeatherApiClient>();
+    builder.Services.AddSingleton<IWeatherApiClient>(sp =>
+      new CachedWeatherApiClient(
+        sp.GetRequiredService<WeatherApiClient>(),
+        sp.GetRequiredService<IMemoryCache>(),
+        cacheOptions));
 
     return builder;
   }

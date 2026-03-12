@@ -56,7 +56,6 @@ public class WeatherApiClient : IWeatherApiClient
       throw new ArgumentException("City cannot be null or empty.", nameof(city));
     }
 
-
     var url = $"{_baseUrl}/current.json?q={Uri.EscapeDataString(city)}";
     var response = await _httpClient.GetAsync(url);
 
