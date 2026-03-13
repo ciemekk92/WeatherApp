@@ -1,6 +1,7 @@
 # WeatherApp
+<img width="1909" height="911" alt="image" src="https://github.com/user-attachments/assets/345a4ba6-f4aa-46eb-be42-5057d1889b63" />
 
-A full-stack weather application built as an **Nx monorepo**. The frontend is an Angular SPA that displays weather, timezone, and astronomy data. The backend is a .NET Web API that proxies requests to an external weather API (RapidAPI).
+A full-stack weather application built as **Nx monorepo**. The frontend is an Angular SPA that displays weather, timezone, and astronomy data. The backend is a .NET Web API that proxies requests to an external weather API (RapidAPI).
 
 ## Tech Stack
 
