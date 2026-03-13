@@ -1,101 +1,139 @@
 # WeatherApp
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A full-stack weather application built as an **Nx monorepo**. The frontend is an Angular SPA that displays weather, timezone, and astronomy data. The backend is a .NET Web API that proxies requests to an external weather API (RapidAPI).
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## Tech Stack
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+### Frontend
+- **Angular** 21 with TypeScript
+- **PrimeNG** (UI component library)
+- **RxJS**
+- **Zod** (schema validation)
+- **SCSS** (styling)
+- **Vitest** (unit testing)
+- **ESLint** (linting)
 
-## Run tasks
+### Backend
+- **.NET 10** (C#) Web API
+- **MediatR** (CQRS / mediator pattern)
+- **xUnit** + **FluentAssertions** + **NSubstitute** (testing)
+- **Swashbuckle** (Swagger / OpenAPI)
 
-To run the dev server for your app, use:
+### Tooling
+- **Nx** 22 (monorepo orchestration, caching, task runner)
+- **Vite** (frontend bundling)
+
+---
+
+## Prerequisites
+
+- **Node.js** (LTS) and **npm**
+- **.NET 10 SDK**
+- **Nx CLI** – installed globally (`npm i -g nx`) or use via `npx nx`
+
+---
+
+## User Secrets Setup
+
+The backend requires two secrets to communicate with the external weather API:
+
+| Secret Key               | Description                          |
+| ------------------------ | ------------------------------------ |
+| `WEATHER_API_BASE_URL`   | Base URL of the weather API          |
+| `WEATHER_API_KEY`        | API key for authenticating requests  |
+
+The `UserSecretsId` is already configured in the `.csproj` file — no additional setup on your machine is required. Just set the secret values using one of the options below.
+
+### Option 1 – CLI (dotnet)
+
+```sh
+cd apps/backend/Api
+
+dotnet user-secrets set "WEATHER_API_BASE_URL" "<your-base-url>"
+dotnet user-secrets set "WEATHER_API_KEY" "<your-api-key>"
+```
+
+### Option 2 – JetBrains Rider
+
+1. In the Solution Explorer, right-click the **WeatherApp.Backend.Api** project.
+2. Select **Tools → .NET User Secrets**.
+3. A `secrets.json` file will open — add the following:
+
+```json
+{
+  "WEATHER_API_BASE_URL": "<your-base-url>",
+  "WEATHER_API_KEY": "<your-api-key>"
+}
+```
+
+### Option 3 – Visual Studio
+
+1. In the Solution Explorer, right-click the **WeatherApp.Backend.Api** project.
+2. Select **Manage User Secrets**.
+3. A `secrets.json` file will open — add the same JSON as above.
+
+---
+
+## Running the Applications
+
+### Frontend (Angular)
 
 ```sh
 npx nx serve weather-app
 ```
 
-To create a production bundle:
+The dev server starts with live-reload enabled (default: `http://localhost:4200`).
+
+### Backend (.NET API)
 
 ```sh
-npx nx build weather-app
+npx nx run WeatherApp.Backend.Api:watch
 ```
 
-To see all available targets to run for a project, run:
+This starts the backend with `dotnet watch` so it auto-restarts on code changes.
+
+Alternatively, to run without watch mode:
 
 ```sh
-npx nx show project weather-app
+npx nx run WeatherApp.Backend.Api:run
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+Swagger UI will be available at `http://localhost:5103/swagger` by default.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
+### Running Both at Once
 
 ```sh
-npx nx g @nx/angular:app demo
+npx nx run-many -t serve watch -p weather-app WeatherApp.Backend.Api
 ```
 
-To generate a new library, use:
+---
+
+## Linting
+
+### Lint all projects
 
 ```sh
-npx nx g @nx/angular:lib mylib
+npx nx run-many -t lint
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
+### Lint a specific project
 
 ```sh
-npx nx connect
+npx nx lint weather-app
 ```
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+---
 
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Testing
 
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
+### Run all tests (frontend + backend)
 
 ```sh
-npx nx g ci-workflow
+npx nx run-many -t test
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Run tests for a specific project
 
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```sh
+npx nx test weather-app
+```
