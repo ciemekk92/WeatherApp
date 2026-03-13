@@ -12,7 +12,6 @@ import { LoaderComponent } from '@weather-app/shared-ui';
 
 @Component({
   selector: 'lib-home-features-home',
-  standalone: true,
   imports: [
     DataSelectionComponent,
     WeatherPanelComponent,

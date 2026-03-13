@@ -3,7 +3,6 @@ import { WeatherDto } from '@weather-app/weather-models';
 
 @Component({
   selector: 'lib-weather-features-weather-panel',
-  standalone: true,
   templateUrl: './weather-panel.component.html',
   styleUrl: './weather-panel.component.scss',
 })

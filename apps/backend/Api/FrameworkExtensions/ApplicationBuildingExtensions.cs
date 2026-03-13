@@ -57,7 +57,6 @@ internal static class ApplicationBuildingExtensions
     }
 
     builder.Services.AddControllers();
-    builder.Services.AddHttpContextAccessor();
 
     return builder;
   }

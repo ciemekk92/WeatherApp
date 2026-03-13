@@ -3,7 +3,6 @@ import { TimezoneDto } from '@weather-app/timezone-models';
 
 @Component({
   selector: 'lib-timezone-features-timezone-panel',
-  standalone: true,
   templateUrl: './timezone-panel.component.html',
   styleUrl: './timezone-panel.component.scss',
 })

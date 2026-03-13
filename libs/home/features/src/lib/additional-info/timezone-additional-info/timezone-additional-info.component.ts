@@ -4,7 +4,6 @@ import { Fieldset } from 'primeng/fieldset';
 
 @Component({
   selector: 'lib-home-features-timezone-additional-info',
-  standalone: true,
   templateUrl: './timezone-additional-info.component.html',
   styleUrl: './timezone-additional-info.component.scss',
   imports: [Fieldset],

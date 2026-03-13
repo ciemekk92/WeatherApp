@@ -4,7 +4,6 @@ import { Fieldset } from 'primeng/fieldset';
 
 @Component({
   selector: 'lib-home-features-weather-additional-info',
-  standalone: true,
   templateUrl: './weather-additional-info.component.html',
   styleUrl: './weather-additional-info.component.scss',
   imports: [Fieldset],
