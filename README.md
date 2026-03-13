@@ -38,10 +38,10 @@ A full-stack weather application built as **Nx monorepo**. The frontend is an An
 
 The backend requires two secrets to communicate with the external weather API:
 
-| Secret Key               | Description                          |
-| ------------------------ | ------------------------------------ |
-| `WEATHER_API_BASE_URL`   | Base URL of the weather API          |
-| `WEATHER_API_KEY`        | API key for authenticating requests  |
+| Secret Key               | Description                                                    |
+| ------------------------ |----------------------------------------------------------------|
+| `WEATHER_API_BASE_URL`   | Base URL of the weather API **without a trailing slash**, e.g. `https://weatherapi-com.p.rapidapi.com` |
+| `WEATHER_API_KEY`        | API key for authenticating requests                            |
 
 The `UserSecretsId` is already configured in the `.csproj` file — no additional setup on your machine is required. Just set the secret values using one of the options below.
 
